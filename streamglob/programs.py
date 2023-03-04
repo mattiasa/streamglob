@@ -997,7 +997,9 @@ class StreamlinkDownloader(Downloader):
     )
 
     default_args = [
-        "--force-progress"
+        "--force-progress",
+        '--hls-audio-select',
+        '*'
     ]
 
     output_handling = OutputHandling.WATCH
