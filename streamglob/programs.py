@@ -1316,7 +1316,7 @@ def load():
                 "command",
                 distutils.spawn.find_executable(name)
             )
-            if not path and not cfg.disabled:
+            if not path and not cfg.get('disabled', False):
                 logger.warning(f"couldn't find command for {name}")
                 continue
             # First, try to find by "type" config value, if present
