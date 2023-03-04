@@ -1186,9 +1186,10 @@ class DownloadMediaTaskMixin(object):
         with db_session:
             now = datetime.now()
             for s in self.sources:
-                s = MediaSource[s.media_source_id]
-                s.attach().downloaded = now
-            if self.listing:
+                if s.media_source_id:
+                    s = MediaSource[s.media_source_id]
+                    s.attach().downloaded = now
+            if self.listing and self.listing.media_listing_id:
                 listing = MediaListing[self.listing.media_listing_id]
                 listing.downloaded = now
                 # self.listing.attach().downloaded = now
