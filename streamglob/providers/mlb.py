@@ -787,6 +787,7 @@ class MLBLevelFilter(ListingFilter):
             ("A-", 15),
             ("R", 16),
             ("OFF", 17),
+            ("Intl", 51)
         ])
 
 class MLBProvider(BAMProviderMixin,
