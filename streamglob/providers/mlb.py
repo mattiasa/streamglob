@@ -788,6 +788,7 @@ class MLBLevelFilter(ListingFilter):
             ("R", 16),
             ("OFF", 17),
             ("College", 22),
+            ("KBO", 32),
             ("Intl", 51)
         ])
 
