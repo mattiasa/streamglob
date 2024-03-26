@@ -788,11 +788,9 @@ class MLBLevelFilter(ListingFilter):
             ("R", 16),
             ("OFF", 17),
             ("College", 22),
+            ("Independent", 23),
             ("KBO", 32),
             ("Intl", 51),
-            ("MEX", 112),
-            ("PCL", 125),
-
         ])
 
 class MLBProvider(BAMProviderMixin,
