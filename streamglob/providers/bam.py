@@ -738,18 +738,44 @@ class BAMMediaListingMixin(object):
     def away_team(self):
         # if not self.away_team_id:
         #     raise Exception
-        return self.provider.TEAM_DATA_CLASS.get(
+        team = self.provider.TEAM_DATA_CLASS.get(
             provider_id=self.provider.CONFIG_IDENTIFIER,
             bam_team_id=self.away_team_id
         )
 
+        if team:
+            return team
+
+        return self.provider.TEAM_DATA_CLASS.from_json(
+            provider_id=self.provider.CONFIG_IDENTIFIER,
+            sport_id=4711,
+            tm={
+            "id": self.away_team_id,
+            "name": "Unknown",
+            "abbreviation": "UNK",
+            "locationName": "Unknown",
+        })
+
     @property
     @db_session
     def home_team(self):
-        return self.provider.TEAM_DATA_CLASS.get(
+        team = self.provider.TEAM_DATA_CLASS.get(
             provider_id=self.provider.CONFIG_IDENTIFIER,
             bam_team_id=self.home_team_id
         )
+
+        if team:
+            return team
+
+        return self.provider.TEAM_DATA_CLASS.from_json(
+            provider_id=self.provider.CONFIG_IDENTIFIER,
+            sport_id=4711,
+            tm={
+                "id": self.home_team_id,
+                "name": "Unknown",
+                "abbreviation": "UNK",
+                "locationName": "Unknown",
+            })
 
     @db_session
     def team_box(self, team_id):
